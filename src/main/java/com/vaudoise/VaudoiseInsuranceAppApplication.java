@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VaudoiseInsuranceAppApplication {
 
 	public static void main(String[] args) {
-		System.out.println("TEST");
 		SpringApplication.run(VaudoiseInsuranceAppApplication.class, args);
 	}
 

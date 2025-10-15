@@ -59,16 +59,18 @@ src/
 
 📚 Endpoints (Swagger-like)
 🔹 Clients
-
+```text
 Méthode	Endpoint	Description
 POST	/api/clients	Crée un client (type PERSON ou COMPANY).
 GET	/api/clients	Retourne tous les clients.
 GET	/api/clients/{id}	Retourne les infos complètes d’un client.
 PUT	/api/clients/{id}	Met à jour un client (tous les champs sauf birthDate & companyIdentifier).
 DELETE	/api/clients/{id}	Supprime un client et clôture ses contrats actifs à la date du jour.
+
 🧾 Exemple – Créer un client PERSON
+
 POST /api/clients
-```text
+
 {
   "type": "PERSON",
   "name": "Alice Dupont",
@@ -95,9 +97,11 @@ POST /api/clients/2/contracts
 }
 
 🧾 Exemple – Contrats actifs filtrés par updateDate
+
 GET /api/clients/2/contracts?updatedAfter=2025-10-01T00:00:00Z&updatedBefore=2025-10-15T00:00:00Z
 
 🧾 Exemple – Somme des contrats actifs
+
 GET /api/clients/2/contracts/active/sum
 
 Réponse :
@@ -105,6 +109,7 @@ Réponse :
 150.75
 
 ✅ Validation & Règles métier
+
 Champ	Validation
 email	Format valide requis (@Email)
 phone	Regex : ^[+0-9()\\s-]{6,32}$
@@ -143,6 +148,7 @@ curl -X POST http://localhost:8080/api/clients/1/contracts \
 # Somme des contrats actifs
 curl http://localhost:8080/api/clients/1/contracts/active/sum
 
+```
 🔮 Axes d’amélioration possibles
 Domaine	Amélioration possible
 Sécurité	Authentification JWT + rôles (ADMIN / COUNSELOR).
@@ -153,6 +159,7 @@ Performance	Cache sur la somme des contrats actifs (Caffeine/Redis).
 Pagination	Sur les listes de clients et contrats (Spring Data Pageable).
 Front	Développer un front Angular/React consommant l’API.
 Monitoring	Ajouter Actuator, Prometheus et Grafana pour les métriques.
+```
 
 Développé par Arnault Douyere
 Full-stack Developer (Java / Angular)

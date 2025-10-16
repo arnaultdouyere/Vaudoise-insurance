@@ -4,6 +4,7 @@ import com.vaudoise.dto.client.ClientCreateRequest;
 import com.vaudoise.dto.client.ClientResponse;
 import com.vaudoise.dto.client.ClientUpdateRequest;
 import com.vaudoise.service.ClientService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
+@RequiredArgsConstructor
 public class ClientController {
     private final ClientService service;
-    public ClientController(ClientService service) { this.service = service; }
+
+    @GetMapping
+    public ResponseEntity<List<ClientResponse>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 
     @PostMapping
     public ResponseEntity<ClientResponse> create(@RequestBody ClientCreateRequest req) {
@@ -24,9 +30,6 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ClientResponse get(@PathVariable Long id) { return service.get(id); }
-
-    @GetMapping("/")
-    public List<ClientResponse> getAll() { return service.getAll(); }
 
     @PutMapping("/{id}")
     public ClientResponse update(@PathVariable Long id, @RequestBody ClientUpdateRequest req) {

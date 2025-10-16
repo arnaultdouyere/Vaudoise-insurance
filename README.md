@@ -286,6 +286,7 @@ curl http://localhost:8080/api/clients/1/contracts/active/sum
  Pagination sur /api/clients
  Metrics / Actuator / Health-checks
  Passage à Testcontainers pour les tests MySQL
+ Gestion git : Étant seul sur un projet de test, je me suis permis des commandes Git que je ne ferai pas sur un projet collaboratif.
 
 ## 🧠 Résumé architecture
 L’application repose sur une architecture clean & modulaire.
